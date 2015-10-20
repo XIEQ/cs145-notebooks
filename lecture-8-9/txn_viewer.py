@@ -58,8 +58,12 @@ class TransactionManager:
       'operation': 'READ(%s)' % var,
       'state': dict(deepcopy(self._state))
     })
+    return self._state[var][thread+1]
 
-  def write(self, thread, var, value=None, f=None):
+  def write(self, thread, var, val):
+    self.write_fn(thread, var, value=val)
+
+  def write_fn(self, thread, var, value=None, f=None):
     if value and not hasattr(value, '__call__'):
       val = value
       val_string = str(value)
