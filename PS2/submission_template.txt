@@ -3,7 +3,7 @@
 
     <!--
         CS 145, FALL 2015
-        PROBLEM SET 1 SUBMISSION TEMPLATE
+        PROBLEM SET 2 SUBMISSION TEMPLATE
 
         Please copy and paste your SQL queries (and potentially Python code
         for the bonus question) into the appropriate spots below. 
@@ -20,7 +20,7 @@
     <student>
         <name>
             <!-- Insert your full name on the line below. -->
-            
+
         </name>
         <sunet>
             <!-- Insert your SUNet ID (NOT your student ID number!) below. -->
@@ -32,8 +32,6 @@
     <!-- BEGIN PROBLEM 1 -->
     <answer number="1a">
         <!-- Paste your solution to problem 1, part (a) below this line. --><![CDATA[
-
-
 
         ]]><!-- End problem 1, part (a). -->
     </answer>
@@ -70,8 +68,10 @@
         ]]><!-- End problem 2, part (a). -->
     </answer>
     <answer number="2b">
-        <!-- Paste your solution to problem 2, part (c) below this line. --><![CDATA[
-
+        <!-- Paste your solution to problem 2, part (b) below this line. --><![CDATA[
+            DROP TABLE IF EXISTS R; 
+            CREATE TABLE R (A int, B int, C int, D int);
+	
 
 
         ]]><!-- End problem 2, part (b). -->
