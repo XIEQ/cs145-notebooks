@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<pset>
+
+    <!--
+        CS 145, FALL 2015
+        PROBLEM SET 3 SUBMISSION TEMPLATE
+
+        Please copy and paste your solutions into the appropriate spots below. 
+
+        When submitting SQL queries, please do not include the intitial 
+        %sql or %%sql IPython commands. Just include the SQL code.
+
+        DO NOT DELETE THE <![CDATA[ ... ]]> LINES IN EACH <answer> TAG!
+        Doing so will break the autograder. To avoid accidentally breaking
+        something, please leave all existing comments in this template
+        intact in your submission.
+    -->
+
+    <student>
+        <name>
+            <!-- Insert your full name on the line below. -->
+
+        </name>
+        <sunet>
+            <!-- Insert your SUNet ID (NOT your student ID number!) below. -->
+
+        </sunet>
+    </student>
+
+
+    <!-- BEGIN PROBLEM 1 -->
+    <answer number="1a">
+        <!-- Paste your solution to problem 1, part (a) below this line. --><![CDATA[
+
+        ]]><!-- End problem 1, part (a). -->
+    </answer>
+    <answer number="1b_i">
+        <!-- Paste your solution to problem 1, part (b.i) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 1, part (b.i). -->
+    </answer>
+    <answer number="1b_ii">
+        <!-- Paste your solution to problem 1, part (b.ii) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 1, part (b.ii). -->
+    </answer>
+    <answer number="1b_iii">
+        <!-- Paste your solution to problem 1, part (b.iii) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 1, part (b.iii). -->
+    </answer>
+    <answer number="1c">
+        <!-- Paste your solution to problem 1, part (c) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 1, part (c). -->
+    </answer>
+    <!-- END PROBLEM 1 -->
+
+
+    <!-- BEGIN PROBLEM 2 -->
+    <answer number="2a">
+        <!-- Paste your solution to problem 2, part (a) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 2, part (a). -->
+    </answer>
+    <answer number="2b">
+        <!-- Paste your solution to problem 2, part (b) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 2, part (b). -->
+    </answer>
+    <answer number="2c">
+        <!-- Paste your solution to problem 2, part (c) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 2, part (c). -->
+    </answer>
+    <!-- END PROBLEM 2 -->
+
+
+    <!-- BEGIN PROBLEM 3 -->
+    <answer number="3">
+        <!-- Paste your solution to problem 3 below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 3. -->
+    </answer>
+    <!-- END PROBLEM 3 -->
+
+
+    <!-- BEGIN PROBLEM 4 -->
+    <answer number="4a_i">
+        <!-- Paste your solution to problem 4, part (a.i) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 4, part (a.i). -->
+    </answer>
+    <answer number="4a_ii">
+        <!-- Paste your solution to problem 4, part (a.ii) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 4, part (a.ii). -->
+    </answer>
+    <answer number="4a_iii">
+        <!-- Paste your solution to problem 4, part (a.iii) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 4, part (a.iii). -->
+    </answer>
+    <answer number="4b">
+        <!-- Paste your solution to problem 4, part (b) below this line. --><![CDATA[
+
+
+
+        ]]><!-- End problem 4, part (b). -->
+    </answer>
+    <!-- END PROBLEM 1 -->
+
+
+    <!-- BEGIN BONUS -->
+    <answer number="bonus_problem">
+        <!-- Paste your solution to bonus problem below this line. --><![CDATA[
+
+
+
+        ]]><!-- End bonus problem. -->
+    </answer>
+    <!-- END BONUS -->
+
+</pset>
