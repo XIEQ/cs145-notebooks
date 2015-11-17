@@ -28,6 +28,7 @@ class OpBase:
         self.in_count = 0
         self.out_count = 0
         self.children = children
+        #self.count_reads = True
         #self.op_str   = None
     
     def __repr__(self): return "{0}".format(self.schema)
@@ -49,10 +50,13 @@ class OpBase:
         for c in self.children: c.reset_count()
 
     def total_count(self):
-        return self.in_count + sum([c.total_count() for c in self.children])
+        return self.in_count + sum([c.total_count() for c in self.children if c.count_reads])
 
     def count_str(self, offset):
-        return " "*(4*offset) + "*" + " {0} [tuples read: {1} out: {2}]\n".format(self.op_str, self.in_count, self.out_count) 
+        out = " "*(4*offset) + "*" + " {0} ".format(self.op_str)
+        if self.count_reads:
+            out += "[tuples read in: {0} out: {1}]".format(self.in_count, self.out_count) 
+        return out + "\n"
 
     def toCount(self, offset=0):
         return self.count_str(offset) + ''.join([c.toCount(offset+1) for c in self.children])
@@ -63,6 +67,7 @@ class BaseRelation(OpBase):
     def __init__(self, res, name=None):
         self.res  = res 
         self.name = name
+        self.count_reads = False
         OpBase.__init__(self, res.keys, [])
         self.op_str = "{0}({1}) has {2} tuples".format(self.name, ','.join(self.schema), len(self.res))
         
@@ -85,6 +90,7 @@ class Select(OpBase):
         self.op_str    = "$\sigma_{{{0}={1}}}$".format(self.attr, self.v)
         assert(attr in in_schema) # TOOD: replace with an exception!
         OpBase.__init__(self, in_schema, [self.in_op]) # Schema Unchanged
+        self.count_reads = True
         
     def __iter__(self):
         idx = self.in_op.resolve_attribute(self.attr)
@@ -105,6 +111,7 @@ class Project(OpBase):
         self.op_str     =  "$\Pi_{{{0}}}$".format(self.attributes)
         assert(all([x in self.in_op.schema for x in attributes])) # TODO: replace with an exception
         OpBase.__init__(self, self.attributes, [self.in_op]) # Schema changes!
+        self.count_reads = True
     
     def project_helper(self, idx_list, t):
         return tuple([t[i] for i in idx_list])
@@ -121,7 +128,6 @@ class Project(OpBase):
     def toMD(self):
         return "$\Pi_{{{0}}}$({1})".format(','.join(self.attributes), self.in_op.toMD())
 
-
 class CrossProduct(OpBase):
     """Cross Product"""
     def __init__(self, op1, op2):
@@ -133,6 +139,7 @@ class CrossProduct(OpBase):
         # Make sure the schemas are distinct
         assert(len(s1.intersection(s2)) == 0) # TODO: remove ugly
         OpBase.__init__(self, op1.schema.union(op2.schema), [op1,op2]) # Schema changes!
+        self.count_reads = True
         
     def __iter__(self):
         for x in self.l:
@@ -154,7 +161,8 @@ class NJoin(OpBase):
         s2          = set(op2.schema)
         self.common = s1.intersection(s2)
         self.op_str = "$\Join_{{{0}}}$".format(','.join(self.common))
-        OpBase.__init__(self, op1.schema + filter(lambda x : x not in self.common, op2.schema), [op1,op1]) 
+        OpBase.__init__(self, op1.schema + filter(lambda x : x not in self.common, op2.schema), [op1,op2]) 
+        self.count_reads = True
         
     def __iter__(self):
         idx_cl = self.l.resolve_attributes(self.common) 
@@ -180,6 +188,7 @@ class Union(OpBase):
         self.op_str = "$\\bigcup$"
         assert(op1.schema == op2.schema)
         OpBase.__init__(self, op1.schema, [op1,op2]) 
+        self.count_reads = True
         
     def __iter__(self):
         ll = get_result(self.l)
